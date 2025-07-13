@@ -1,10 +1,9 @@
-import Chat from './Chat';
+import Chat from './chat';
 
 export default function Home() {
   return (
-    <div style={{ padding: '2rem', fontFamily: 'Arial, sans-serif' }}>
-      <h1>Сайн байна уу, Оюунсанаа chatbot энд ажиллаж байна</h1>
-      <p>Та надад юу ч асууж болно 🧠</p>
+    <div>
+      <h1>Сайн байна уу, Оюунсанаа chatbot ажиллаж байна!</h1>
       <Chat />
     </div>
   );
