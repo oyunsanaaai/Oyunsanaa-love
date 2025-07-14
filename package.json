@@ -1,6 +1,7 @@
 {
   "name": "oyunsanaa-app",
   "version": "1.0.0",
+  "type": "module",                     ← ✨ **Энэ мөрийг нэмнэ**
   "scripts": {
     "dev": "next dev",
     "build": "next build",
