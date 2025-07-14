@@ -1,9 +1,9 @@
-import Chat from './chat';
+import Chat from '../Chat';
 
 export default function Home() {
   return (
     <div>
-      <h1>Сайн байна уу, Оюунсанаа chatbot ажиллаж байна!</h1>
+      <h1>Сайн байна уу, Оюунсанаа chatbot</h1>
       <Chat />
     </div>
   );
