@@ -19,14 +19,8 @@ export default async function handler(req, res) {
     });
 
     const data = await response.json();
-
-    if (response.ok) {
-      res.status(200).json({ role: 'assistant', content: data.choices[0].message.content });
-    } else {
-      res.status(500).json({ error: data });
-    }
-
+    res.status(200).json(data.choices[0].message);
   } catch (error) {
-    res.status(500).json({ error: 'Internal server error' });
+    res.status(500).json({ error: 'Failed to call OpenAI API' });
   }
 }
