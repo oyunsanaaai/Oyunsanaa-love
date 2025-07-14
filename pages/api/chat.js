@@ -6,7 +6,7 @@ export default async function handler(req, res) {
   const { messages } = req.body;
 
   if (!process.env.OPENAI_API_KEY) {
-    return res.status(500).json({ error: 'OpenAI API key is not set in environment variables.' });
+    return res.status(500).json({ error: 'Missing OpenAI API Key' });
   }
 
   try {
@@ -18,14 +18,14 @@ export default async function handler(req, res) {
       },
       body: JSON.stringify({
         model: 'gpt-3.5-turbo',
-        messages,
+        messages: messages,
       }),
     });
 
     const data = await response.json();
 
-    if (data.error) {
-      return res.status(500).json({ error: data.error.message });
+    if (!data.choices || !data.choices[0]?.message?.content) {
+      return res.status(500).json({ error: 'Invalid response from OpenAI' });
     }
 
     return res.status(200).json({
@@ -34,6 +34,7 @@ export default async function handler(req, res) {
     });
 
   } catch (error) {
+    console.error('API error:', error);
     return res.status(500).json({ error: 'Something went wrong.' });
   }
 }
